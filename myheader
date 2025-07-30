@@ -1,0 +1,30 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <map>
+#include <set>
+#include <unordered_map>
+#include <queue>
+#include <stack>
+using namespace std;
+
+
+#include <iostream>        // for cin, cout
+#include <vector>          // for vector
+#include <algorithm>       // for sort, max, min, etc.
+#include <map>             // for map
+#include <set>             // for set
+#include <unordered_map>   // for unordered_map
+#include <queue>           // for queue, priority_queue
+#include <stack>           // for stack
+
+#include <deque>           // for deque
+#include <cmath>           // for math functions like sqrt, pow
+#include <cstring>         // for memset, strcmp, etc.
+#include <climits>         // for INT_MAX, INT_MIN
+#include <limits>          // for numeric_limits
+#include <string>          // for string operations
+#include <sstream>         // for stringstream
+
+
+// using namespace std;
