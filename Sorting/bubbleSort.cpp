@@ -49,41 +49,41 @@ int main(){
 // Inner loop: Runs from 0 to n-i-1 to compare adjacent elements and swap if needed.
 // Optimization (didSwap check): Exits early if no swaps occur, improving efficiency.
 
-// #include <bits/stdc++.h>
-// using namespace std;
+#include <bits/stdc++.h>
+using namespace std;
 
-// void bubbleSort(int n, int arr[]){
-//     for(int i=0; i<n-1; i++){  // Incrementing loop  // example below
-//         int didSwap = 0;
-//         for(int j=0; j<n-i-1; j++){  // Adjusted bounds
-//             if(arr[j] > arr[j+1]){
-//                 swap(arr[j], arr[j+1]);
-//                 didSwap = 1;
-//             }
-//         }
-//         if(didSwap == 0){
-//             break; // Optimization: Stop if already sorted
-//         }
-//         cout << "runs\n";
-//     }
-// }
+void bubbleSort(int n, int arr[]){
+    for(int i=0; i<n-1; i++){  // Incrementing loop  // example below
+        int didSwap = 0;
+        for(int j=0; j<n-i-1; j++){  // Adjusted bounds
+            if(arr[j] > arr[j+1]){
+                swap(arr[j], arr[j+1]);
+                didSwap = 1;
+            }
+        }
+        if(didSwap == 0){
+            break; // Optimization: Stop if already sorted
+        }
+        cout << "runs\n";
+    }
+}
 
-// int main(){
-//     int n;
-//     cin >> n;
-//     int arr[n];
+int main(){
+    int n;
+    cin >> n;
+    int arr[n];
 
-//     for(int i=0; i<n; i++){
-//         cin >> arr[i];
-//     }
+    for(int i=0; i<n; i++){
+        cin >> arr[i];
+    }
     
-//     bubbleSort(n, arr);
+    bubbleSort(n, arr);
     
-//     for(int i=0; i<n; i++){
-//         cout << arr[i] << " ";
-//     }
-//     return 0;
-// }
+    for(int i=0; i<n; i++){
+        cout << arr[i] << " ";
+    }
+    return 0;
+}
 
 
 
@@ -95,7 +95,7 @@ int main(){
 
 
 
-3
+
 
 
 
@@ -112,3 +112,13 @@ int main(){
 // i = 3	        2 comparisons	            {1, 2, 5, 5, 6, 9}
 // i = 4	        1 comparison	            {1, 2, 5, 5, 6, 9}
 // At i = 4, only one comparison is needed, and the array is sorted.
+
+
+
+13 46 24 52 20 9
+13 46 24 52 20 9
+13 24 46 52 20 9
+13 24 46 52 20 9
+13 24 46 20 52 9
+13 24 46 20 9 52
+
