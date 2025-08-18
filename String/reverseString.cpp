@@ -5,8 +5,8 @@
 using namespace std;
 
 void reverseString(vector<char>& s) {
-    int st = 0;
-    int e = s.size() - 1;
+    int st = 0;     //start index
+    int e = s.size() - 1;       //end index
     while (st < e) {
         swap(s[st++], s[e--]);
     }
