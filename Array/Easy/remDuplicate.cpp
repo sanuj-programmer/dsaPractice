@@ -29,7 +29,7 @@
 
 
 
-#include<bits/stdc++.h>   //Optimised
+#include<iostream>   //Optimised
 using namespace std;
 int removeDuplicates(int arr[], int n)
 {
@@ -50,5 +50,6 @@ int main() {
   for (int i = 0; i < k; i++) {
     cout << arr[i] << " ";
   }
+  cout << endl;
 }
 
