@@ -1,131 +1,90 @@
-#include<iostream>
+// 1. Char Array Without '\0' (Null Terminator) like a normal array with charcter data type
+// It is just a collection of characters, not a string.
+char arr1[] = {'H', 'e', 'l', 'l', 'o'};
+// Memory layout:
+// arduino
+// | 'H' | 'e' | 'l' | 'l' | 'o' |
+// Size = 5.
+
+
+    // 2 and 3 are the ways to represent strings; C strings to C++ strings are explained below.
+
+//  2. C-Style String (from C) or  Char Array With '\0' (Null Terminator)
+// It is a string in C (C-style string).
+// In C++ you can still use the old null-terminated char arrays:
+char arr2[] = {'H', 'e', 'l', 'l', 'o', '\0'};
+// or simply
+char arr3[] = "Hello";  // Compiler automatically adds '\0'
+// Memory layout:
+// arduino
+// | 'H' | 'e' | 'l' | 'l' | 'o' | '\0' |
+// These behave like C strings → require '\0', 
+// and functions come from <cstring> like strlen, strcpy, strcmp, etc.
+
+
+// 🔹 3. C++ std::string (Modern Way)
+#include <iostream>
+#include <string>
 using namespace std;
 
-int main(){
-    char name[20];
-    cout << "Enter your name: ";
-    
-    cin.getline(name, 20);      // If you want the full name with spaces, tab -> use cin.getline() instead:
-    // Enter your full name: Sanuj Kumar Singh
-    // Your name is: Sanuj Kumar Singh
+int main() {
+    string s1 = "Hello";     // ✅ Easy string initialization
+    string s2 = " World";
 
-    // cin >> name ;            // Not print anything after space,tab present
-    // // Enter your name: Sanuj Kumar Singh
-    // // Your name is: Sanuj
+    // Concatenation
+    string s3 = s1 + s2;
+    cout << s3 << endl;  // Output: Hello World
 
+    // Length
+    cout << "Length: " << s3.size() << endl;
 
-    cout << "Your name is: " << name << endl;
+    // Access character
+    cout << "First char: " << s3[0] << endl;
+
+    // Substring
+    cout << "Substring: " << s3.substr(6, 5) << endl; // World
+
+    // Comparison
+    if(s1 == "Hello") {
+        cout << "Equal" << endl;
+    }
+
     return 0;
-
 }
 
 
 
+// can we use  C-Style String (from C) in cpp
+// char cstr[] = "Hello";   // {'H','e','l','l','o','\0'}
 
-// #include<iostream> 
+// Yes ✅ absolutely!
+// C++ is a superset of C (with some differences), so you can use C-style strings in C++ without any issue.
+//  Notes:
+// char cstr[] = "Hello"; is 100% valid in C++.
+// It creates a null-terminated char array → so it’s a valid C string.
+// In C++ you just get two choices:
+// C-style strings (char[], char* + <cstring> functions)
+// C++ strings (std::string + .size(), .substr(), +, etc.)
+
+// #include <iostream>
+// #include <cstring>   // for strlen, strcpy, strcat, etc.
+
 // using namespace std;
 
-// char toLowerCase(char ch) {
-//     if(ch >='a' && ch <='z')
-//         return ch;
-//     else{
-//         char temp = ch - 'A' + 'a';
-//         return temp;
-//     }
-// }
+// int main() {
+//     // C-style string
+//     char cstr[] = "Hello";   // {'H','e','l','l','o','\0'}
 
-// bool checkPalindrome(char a[], int n) {
-//     int s = 0;
-//     int e = n-1;
+//     cout << "C-style string: " << cstr << endl;           // prints Hello
+//     cout << "Length: " << strlen(cstr) << endl;           // 5
+//     cout << "Size (with \\0): " << sizeof(cstr) << endl;  // 6
 
-//     while(s<=e) {
-//         if(toLowerCase( a[s] ) != toLowerCase( a[e] ) )
-//         {
-//             return 0;       
-//         }
-//         else{
-//             s++;
-//             e--;
-//         }
-//     }
-//     return 1;
-// }
+//     // Operations using <cstring>
+//     char cstr2[20] = "World";
+//     strcpy(cstr2, cstr);    // copy
+//     strcat(cstr2, " C++");  // concatenate
 
-// void reverse(char name[], int n) {
-//     int s=0;
-//     int e = n-1;
-
-//     while(s<e) {
-//         swap(name[s++], name[e--]);
-//     }
-// }
-
-// int getLength(char name[]) {
-//     int count = 0;
-//     for(int i = 0; name[i] != '\0'; i++) {
-//         count++;
-//     }
-
-//     return count;
-// }
-
-// char getMaxOccCharacter(string s) {
-
-//     int arr[26] = {0};
-
-
-//     //create an array of count of characters
-//     for(int i=0; i<s.length(); i++) {
-//         char ch = s[i];
-//         //lowercase
-//         int number = 0;
-//         number = ch - 'a';
-//         arr[number]++;
-//     }
-
-//     //find maximum occ character
-//     int maxi = -1, ans = 0;
-//     for(int i=0;i<26; i++) {
-//         if(maxi < arr[i]) {
-//             ans = i;
-//             maxi = arr[i];
-//         }
-//     }
-    
-
-//     return 'a'+ans;
-
-// }
-
-// int main( ) {
-// /*
-//     char name[20];
-
-//     cout << "Enter your name " << endl;
-//     cin >> name;
-//     //name[2] = '\0';
-
-//     cout << "Your name is ";
-//     cout << name << endl;
-//     int len = getLength(name);
-//     cout << " Length: " << len << endl;
-
-//     reverse(name, len);
-//     cout << "Your name is ";
-//     cout << name << endl;
-
-//     cout <<" Palindrome or Not: " << checkPalindrome(name, len) << endl;
-
-//     cout << " CHARACTER is " << toLowerCase('b') << endl;
-//     cout << " CHARACTER is " << toLowerCase('C') << endl;
-//     */
-
-//    string s;
-//    cin >> s;
-
-//     cout << getMaxOccCharacter(s) << endl;
+//     cout << "After strcpy + strcat: " << cstr2 << endl;
 
 //     return 0;
 // }
-
-

@@ -5,7 +5,7 @@ using namespace std;
 bool checkPalindrome(string a) {
     int s = 0, e = a.length() - 1;
     while (s <= e) {
-        if (a[s] != a[e]) {
+        if (a[s] != a[e]) { 
             return false; // mismatch
         }
         s++;
