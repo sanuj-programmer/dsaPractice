@@ -8,3 +8,4 @@ int main(){
     cin.getline(name, 40);
     cout << name << endl;
 }
+
