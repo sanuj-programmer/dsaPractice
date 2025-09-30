@@ -1,9 +1,9 @@
 #include <iostream>
 using namespace std;
-struct Node {           //or you can use class instead of struct (struct Node) work the same as class Node
+class Node {         //or you can use (class Node) instead of (struct Node) both work the same.
     public:
-        int data;         // Data stored in the node
-        Node* next;       // Pointer to the next node in the linked list
+        int data;      
+        Node* next;       
         // Constructors
         Node(int data1, Node* next1) {
             data = data1;
@@ -15,13 +15,30 @@ struct Node {           //or you can use class instead of struct (struct Node) w
             next = nullptr;
         }
 };
+
+Node* convertArr2LL(vector<int> &arr) {
+    Node* head = new Node(arr[0]);
+    Node* mover = head;          
+
+    for (int i = 1; i < arr.size(); i++) {
+        Node* temp = new Node(arr[i]);
+        mover->next = temp; 
+        mover = temp;           
+    }
+    return head; 
+}
+
 int main() {
     vector<int> arr = {2, 5, 8, 7};
-    // Create a Node 'x' with the first element of the vector and a null next reference
-    Node x = Node(arr[0], nullptr);
-    // Node x = Node(arr[0]);
-    // Create a pointer 'y' pointing to the Node 'x'
-    Node* y = &x;
-    // Print the memory address of the Node 'x' using the pointer 'y'
-    cout << y << '\n';
+    Node* head = convertArr2LL(arr);
+
+    Node* temp = head;
+    while (temp) {
+        cout << temp->data << " ";
+        temp = temp->next;
+    }
+    cout << endl; 
+    return 0;
 }
+// Output
+// 2 5 8 7 ----> prints the entire linked list data

@@ -20,7 +20,7 @@
 
 // Node* convertArr2LL(vector<int> &arr) {
 //     Node* head = new Node(arr[0]); // Create the head node
-//     Node* mover = head;          // Pointer to track the current node
+//     Node* mover = head;          // Pointer to track the current node. mover is variable name, can be anything
 //     // Iterate through the array and create nodes
 //     for (int i = 1; i < arr.size(); i++) {
 //         Node* temp = new Node(arr[i]); // Create a new node
@@ -74,17 +74,39 @@ Node* convertArr2LL(vector<int> &arr) {
     return head; 
 }
 
+int lengthOfLL(Node* head){
+    int cnt=0;
+    Node* temp=head;
+    while(temp!=nullptr){
+        temp=temp->next;
+        cnt++;
+    }
+    return cnt;
+}
+
+int checkIfValueExists(Node* head, int value){
+    Node* temp=head;
+    while(temp!=nullptr){
+        if(temp->data==value) return 1; // Value found
+        temp=temp->next;
+    }
+    return 0; // Value not found
+}
+
 int main() {
     vector<int> arr = {2, 5, 8, 7};
     Node* head = convertArr2LL(arr);
 
+    //Traverse and print the linked list
     Node* temp = head;
-    while (temp != nullptr) {
-        cout << temp->data << " ";
-        temp = temp->next;
+    while (temp != nullptr) {   //Keep looping as long as temp is not a null pointer.
+        cout << temp->data << " ";  // Print the data of the current node
+        temp = temp->next;  // Move to the next node
     }
     cout << endl; 
+
+    cout << "Length of Linked List: " << lengthOfLL(head) << endl;
+    cout << "Check if value 5 exists: " << checkIfValueExists(head, 5) << endl;
+    cout << "Check if value 10 exists: " << checkIfValueExists(head, 10) << endl;
     return 0;
 }
-// Output
-// 2 5 8 7 ----> prints the entire linked list data
