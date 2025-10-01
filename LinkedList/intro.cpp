@@ -132,7 +132,7 @@ int main() {
         cout << temp->data << " ";  // Print the data of the current node
         temp = temp->next;  // Move to the next node
     }
-    cout << endl; 
+    cout << endl;
 
     cout << "Length of Linked List: " << lengthOfLL(head) << endl;
     cout << "Check if value 5 exists: " << checkIfValueExists(head, 5) << endl;
