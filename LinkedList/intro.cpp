@@ -4,7 +4,7 @@ class Node {         //or you can use (class Node) instead of (struct Node) both
     public:
         int data;      
         Node* next;       
-        // Constructors
+        // Constructor
         Node(int data1, Node* next1) {
             data = data1;
             next = next1; 
