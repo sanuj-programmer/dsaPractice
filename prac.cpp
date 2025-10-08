@@ -1,39 +1,47 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 
-struct Node {
+class Node {
+public:
     int data;
     Node* next;
 
-    Node(int data1) {
-        data = data1;
-        next = nullptr;
-    }
-
+    // Constructor with next pointer
     Node(int data1, Node* next1) {
         data = data1;
         next = next1;
     }
+
+    // Constructor without next pointer
+    Node(int data1) {
+        data = data1;
+        next = nullptr;
+    }
 };
 
-// Remove head node
-Node* removeHead(Node* head) {
-    if (head == nullptr) return nullptr;
+// Convert array → Linked List
+Node* convertArr2LL(vector<int>& arr) {
+    Node* head = new Node(arr[0]);
+    Node* mover = head;
 
-    Node* temp = head;
-    head = head->next;
-    delete temp;
+    for (int i = 1; i < arr.size(); i++) {
+        Node* temp = new Node(arr[i]);
+        mover->next = temp;
+        mover = temp;
+    }
     return head;
 }
 
-int main() {
-    // Manually create linked list: 2 -> 5 -> 8 -> 7
-    Node* head = new Node(2);
-    head->next = new Node(5);
-    head->next->next = new Node(8);
-    head->next->next->next = new Node(7);
+// Insert at head
+Node* insertHead(Node* head, int value) {
+    return new Node(value, head);
+}
 
-    // Print original list
+int main() {
+    vector<int> arr = {2, 5, 8, 7};
+    Node* head = convertArr2LL(arr);
+
     cout << "Original list: ";
     Node* temp = head;
     while (temp != nullptr) {
@@ -41,13 +49,11 @@ int main() {
         temp = temp->next;
     }
     cout << endl;
+    
+    head = insertHead(head, 100);
 
-    // Remove head
-    head = removeHead(head);
-
-    // Print after removing head
-    cout << "After removing head: ";
-    temp = head;
+    cout << "After inserting 100 at head: ";
+    temp = head; // just reuse the same variable
     while (temp != nullptr) {
         cout << temp->data << " ";
         temp = temp->next;

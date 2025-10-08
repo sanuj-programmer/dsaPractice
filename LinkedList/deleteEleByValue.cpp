@@ -11,31 +11,31 @@ struct Node {
     }
 };
 
-// Delete k-th node (1-indexed)
-Node* deleteKth(Node* head, int k) {
+// Delete a node by value
+Node* deleteElement(Node* head, int element) {
     if (head == NULL) return head;  // empty list
 
     // Case 1: delete head node
-    if (k == 1) {
+    if (head->data == element) {
         Node* temp = head;
         head = head->next;
         delete temp;
         return head;
     }
 
-    int cnt = 1;
     Node* temp = head;
     Node* prev = NULL;
-    while (temp != NULL && cnt < k) {
+
+    // Traverse until the element is found
+    while (temp != NULL && temp->data != element) {
         prev = temp;
         temp = temp->next;
-        cnt++;
     }
 
-    // If k is greater than length of list
+    // If element not found
     if (temp == NULL) return head;
 
-    // Skip the k-th node
+    // Unlink the node from the list
     prev->next = temp->next;
     delete temp;
 
@@ -62,10 +62,10 @@ int main() {
     cout << "Original list: ";
     printList(head);
 
-    int k = 3;
-    head = deleteKth(head, k);
+    int element = 30;
+    head = deleteElement(head, element);
 
-    cout << "After deleting " << k << "rd element: ";
+    cout << "After deleting element " << element << ": ";
     printList(head);
 
     return 0;
